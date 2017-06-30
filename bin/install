@@ -7,6 +7,10 @@ SAXON_VERSION=9.7.0-18
 # Navigate to root
 cd $( cd $(dirname $0) ; pwd -P )/..
 
+# Install Node.js modules
+echo "Installing Node.js modules"
+npm install
+
 # Install XSpec
 if ! [ -d lib/xspec ]; then
     echo "Installing XSpec"
