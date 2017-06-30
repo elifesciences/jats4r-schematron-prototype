@@ -9,23 +9,23 @@ cd $( cd $(dirname $0) ; pwd -P )/..
 
 # Install Node.js modules
 echo "Installing Node.js modules"
-npm install
+npm install > /dev/null 2>&1
 
 # Install XSpec
 if ! [ -d lib/xspec ]; then
     echo "Installing XSpec"
-    git clone https://github.com/xspec/xspec.git lib/xspec
+    git clone https://github.com/xspec/xspec.git lib/xspec > /dev/null 2>&1
 else
     echo "Updating XSpec"
     git -C lib/xspec fetch origin
 fi
-git  -C lib/xspec reset --hard "${XSPEC_VERSION}"
+git  -C lib/xspec reset --hard "${XSPEC_VERSION}" > /dev/null 2>&1
 
 # Install Saxon
 if ! [ -f lib/saxon/Saxon-HE-${SAXON_VERSION}.jar ]; then
     echo "Installing Saxon"
     mkdir -p lib/saxon
-    wget -O lib/saxon/Saxon-HE-${SAXON_VERSION}.jar http://central.maven.org/maven2/net/sf/saxon/Saxon-HE/${SAXON_VERSION}/Saxon-HE-${SAXON_VERSION}.jar
+    wget -O lib/saxon/Saxon-HE-${SAXON_VERSION}.jar http://central.maven.org/maven2/net/sf/saxon/Saxon-HE/${SAXON_VERSION}/Saxon-HE-${SAXON_VERSION}.jar > /dev/null 2>&1
     chmod +x lib/saxon/Saxon-HE-${SAXON_VERSION}.jar
 else
     echo "Saxon already installed"
