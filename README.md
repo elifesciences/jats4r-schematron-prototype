@@ -8,7 +8,7 @@ Contains a(n incomplete) prototype for a JATS4R Schematron library.
 Tests
 -----
 
-The library uses [XSpec](https://github.com/xspec/xspec), with the tests stores in [`test`](test).
+The library uses [XSpec](https://github.com/xspec/xspec), with the tests stored in [`test`](test).
 
 ### Requirements
 
