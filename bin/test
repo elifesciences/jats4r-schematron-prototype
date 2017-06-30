@@ -25,3 +25,24 @@ echo "Created test-results.xml and test-results.html"
 
 echo "Cleaning up"
 rm -rf test/xspec
+
+# Determine number of failures
+
+PATTERN="failures=\"([0-9]+)\""
+FAILURES=0
+for WORD in `cat test-results.xml`
+do
+    if [[ ${WORD} =~ ${PATTERN} ]]
+    then
+        FAILURES=$((FAILURES + BASH_REMATCH[1]))
+    fi
+done
+
+if [[ ${FAILURES} == 1 ]]
+then
+    echo "${FAILURES} failure"
+else
+    echo "${FAILURES} failures"
+fi
+
+exit ${FAILURES}
