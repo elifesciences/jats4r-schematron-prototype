@@ -1,0 +1,12 @@
+language: node_js
+
+sudo: false
+
+cache:
+  directories:
+    - lib
+    - node_modules
+
+install: bin/install
+
+script: bin/test
