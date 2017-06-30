@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+               xmlns:mml="http://www.w3.org/1998/Math/MathML"
+               schematron="../src/math.sch">
+
+    <x:scenario label="mml:math position"> 
+
+        <x:scenario label="mml:math can be inside disp-formula">
+            <x:context>
+                <disp-formula>
+                    <mml:math/>
+                </disp-formula>
+            </x:context>
+             <x:expect-not-assert id="math0001"/> 
+        </x:scenario>
+
+        <x:scenario label="mml:math can be inside inline-formula">
+            <x:context>
+                <inline-formula>
+                    <mml:math/>
+                </inline-formula>
+            </x:context>
+             <x:expect-not-assert id="math0001"/> 
+        </x:scenario>
+
+        <x:scenario label="mml:math may not appear elsewhere">
+            <x:context>
+                <p>
+                    <mml:math/>
+                </p>
+            </x:context>
+             <x:expect-assert id="math0001"/> 
+        </x:scenario>
+
+    </x:scenario>
+
+    <x:scenario label="tex-math position"> 
+
+        <x:scenario label="tex-math can be inside disp-formula">
+            <x:context>
+                <disp-formula>
+                    <tex-math/>
+                </disp-formula>
+            </x:context>
+             <x:expect-not-assert id="math0001"/> 
+        </x:scenario>
+
+        <x:scenario label="tex-math can be inside inline-formula">
+            <x:context>
+                <inline-formula>
+                    <tex-math/>
+                </inline-formula>
+            </x:context>
+             <x:expect-not-assert id="math0001"/> 
+        </x:scenario>
+
+        <x:scenario label="tex-math may not appear elsewhere">
+            <x:context>
+                <p>
+                    <tex-math/>
+                </p>
+            </x:context>
+             <x:expect-assert id="math0001"/> 
+        </x:scenario>
+
+    </x:scenario>
+
+</x:description>

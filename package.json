@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "devDependencies": {
+    "junit-merge": "^1.1.0",
+    "junit-viewer": "^4.11.1"
+  }
+}

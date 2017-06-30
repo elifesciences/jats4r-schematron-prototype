@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -e
+
+XSPEC_VERSION=a602c4b31c4740e0af2800228d012cd0393df404
+SAXON_VERSION=9.7.0-18
+
+# Navigate to root
+cd $( cd $(dirname $0) ; pwd -P )/..
+
+# Install XSpec
+if ! [ -d lib/xspec ]; then
+    echo "Installing XSpec"
+    git clone https://github.com/xspec/xspec.git lib/xspec
+else
+    echo "Updating XSpec"
+    git -C lib/xspec fetch origin
+fi
+git  -C lib/xspec reset --hard "${XSPEC_VERSION}"
+
+# Install Saxon
+if ! [ -f lib/saxon/Saxon-HE-${SAXON_VERSION}.jar ]; then
+    echo "Installing Saxon"
+    mkdir -p lib/saxon
+    wget -O lib/saxon/Saxon-HE-${SAXON_VERSION}.jar http://central.maven.org/maven2/net/sf/saxon/Saxon-HE/${SAXON_VERSION}/Saxon-HE-${SAXON_VERSION}.jar
+    chmod +x lib/saxon/Saxon-HE-${SAXON_VERSION}.jar
+else
+    echo "Saxon already installed"
+fi
+rm -f lib/saxon/saxon
+ln -s Saxon-HE-${SAXON_VERSION}.jar lib/saxon/saxon

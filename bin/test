@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+set -e
+
+# Navigate to root
+cd $( cd $(dirname $0) ; pwd -P )/..
+
+# Clean up
+rm -rf test/xspec
+rm -f test-results.html
+rm -f test-results.xml
+
+# Set up
+export SAXON_CP=$(pwd)/lib/saxon/saxon
+
+# Run tests
+for SPEC in math permissions
+do
+    echo "Running test/${SPEC}.xspec"
+    lib/xspec/bin/xspec.sh -j -s test/${SPEC}.xspec > /dev/null 2>&1
+done
+
+node_modules/.bin/junit-merge --dir test/xspec --out test-results.xml
+node_modules/.bin/junit-viewer --results=test/xspec --save=test-results.html > /dev/null 2>&1
+echo "Created test-results.xml and test-results.html"
+
+echo "Cleaning up"
+rm -rf test/xspec
