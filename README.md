@@ -5,7 +5,7 @@ JATS4R Schematron prototype
 
 Contains a(n incomplete) prototype for a JATS4R Schematron library.
 
-[`jats4r.sch`](jats4r.sch) contains the JATS4R recommendations in a single Schematrom file. [`src`](src) contains each recommendations as standalone Schematron files. 
+[`jats4r.sch`](jats4r.sch) contains the JATS4R recommendations in a single Schematron file. [`src`](src) contains each recommendations as standalone Schematron files. 
 
 Tests
 -----
